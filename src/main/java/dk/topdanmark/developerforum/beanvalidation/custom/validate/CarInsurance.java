@@ -1,4 +1,4 @@
-package dk.topdanmark.developerforum.beanvalidation.validate;
+package dk.topdanmark.developerforum.beanvalidation.custom.validate;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -10,10 +10,12 @@ import javax.validation.Payload;
 
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy=CarInsuranceValidator.class)
+@Constraint(validatedBy = CarInsuranceValidator.class)
 public @interface CarInsurance {
-	
-	String message() default "{dk.topdanmark.developerforum.beanvalidation.types.CarInsurance}";
-	Class<?>[] groups() default{};
-	Class<? extends Payload>[] payload() default {};
+
+    String message() default "{dk.topdanmark.developerforum.beanvalidation.types.CarInsurance}";
+
+    Class<?>[] groups() default {};
+
+    Class<? extends Payload>[] payload() default {};
 }
