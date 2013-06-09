@@ -8,18 +8,18 @@ public class Wheel {
 
     @NotNull
     private String position;
-    
+
     @NotNull
-    @Min(value=30)
-    @Max(value=200)
+    @Min(value = 30)
+    @Max(value = 200)
     private Integer diameter;
 
     public String getPosition() {
-	return position;
+        return position;
     }
 
     public void setPosition(String position) {
-	this.position = position;
+        this.position = position;
     }
 
     public Integer getDiameter() {
@@ -30,5 +30,5 @@ public class Wheel {
         this.diameter = diameter;
     }
 
-    
+
 }

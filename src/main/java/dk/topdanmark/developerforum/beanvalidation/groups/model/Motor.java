@@ -1,4 +1,4 @@
-package dk.topdanmark.developerforum.beanvalidation.simple.model;
+package dk.topdanmark.developerforum.beanvalidation.groups.model;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;

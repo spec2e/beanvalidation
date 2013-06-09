@@ -14,11 +14,11 @@ public class CarInsuranceValidator implements ConstraintValidator<CarInsurance, 
     @Override
     public boolean isValid(InsuranceType value, ConstraintValidatorContext context) {
 
-	if (value == InsuranceType.BIL_ANSVAR || value == InsuranceType.BIL_KASKO) {
-	    return true;
-	}
+        if (value == InsuranceType.BIL_ANSVAR || value == InsuranceType.BIL_KASKO) {
+            return true;
+        }
 
-	return false;
+        return false;
     }
 
 }

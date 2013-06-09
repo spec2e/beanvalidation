@@ -1,21 +1,20 @@
-package dk.topdanmark.developerforum.beanvalidation.custom.model;
+package dk.topdanmark.developerforum.beanvalidation.groups.model;
 
-import java.util.Date;
-import java.util.Locale;
-import java.util.Set;
+import dk.topdanmark.developerforum.beanvalidation.types.InsuranceType;
+import org.apache.commons.lang.time.DateUtils;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
+import java.util.Date;
+import java.util.Locale;
+import java.util.Set;
 
-import org.apache.commons.lang.time.DateUtils;
-import org.junit.BeforeClass;
-import org.junit.Test;
+public class GroupsVehicleTest {
 
-import dk.topdanmark.developerforum.beanvalidation.types.InsuranceType;
-
-public class CustomVehicleTest {
 
     private static Validator validator;
 
@@ -23,7 +22,7 @@ public class CustomVehicleTest {
     public static void setUp() {
         Locale.setDefault(Locale.ENGLISH);
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-        CustomVehicleTest.validator = factory.getValidator();
+        GroupsVehicleTest.validator = factory.getValidator();
     }
 
     @Test
@@ -42,12 +41,16 @@ public class CustomVehicleTest {
 
         car.addWheel(leftFrontWheel);
 
-        Set<ConstraintViolation<Car>> violations = CustomVehicleTest.validator.validate(car);
+        Set<ConstraintViolation<Car>> violations = GroupsVehicleTest.validator.validate(car);
 
         for (ConstraintViolation<Car> constraintViolation : violations) {
             System.out.println(constraintViolation.getPropertyPath() + ", " + constraintViolation.getMessage());
         }
 
-    }
+        Set<ConstraintViolation<Car>> insuranceViolations = GroupsVehicleTest.validator.validate(car, InsuranceCheck.class);
 
+        for (ConstraintViolation<Car> constraintViolation : insuranceViolations) {
+            System.out.println(constraintViolation.getPropertyPath() + ", " + constraintViolation.getMessage());
+        }
+    }
 }

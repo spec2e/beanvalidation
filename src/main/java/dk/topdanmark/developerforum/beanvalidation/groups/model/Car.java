@@ -1,24 +1,22 @@
-package dk.topdanmark.developerforum.beanvalidation.simple.model;
+package dk.topdanmark.developerforum.beanvalidation.groups.model;
+
+import dk.topdanmark.developerforum.beanvalidation.custom.validate.CarInsurance;
+import dk.topdanmark.developerforum.beanvalidation.types.InsuranceType;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
-
-import dk.topdanmark.developerforum.beanvalidation.types.InsuranceType;
-
 import java.util.Date;
 
 public class Car extends Vehicle {
 
-
-    @Min(value = 100)
-    @Max(value = 600)
+    @Min(value=100)
+    @Max(value=600)
     private int length;
 
-
-    @NotNull
+    @CarInsurance(groups = InsuranceCheck.class)
     private InsuranceType insured;
 
     @Past
@@ -35,20 +33,20 @@ public class Car extends Vehicle {
         this.motor = motor;
     }
 
-    public int getLength() {
-        return length;
-    }
-
-    public void setLength(int length) {
-        this.length = length;
-    }
-
     public InsuranceType getInsured() {
         return insured;
     }
 
     public void setInsured(InsuranceType insured) {
         this.insured = insured;
+    }
+
+    public int getLength() {
+        return length;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
     }
 
     public Date getRegistered() {

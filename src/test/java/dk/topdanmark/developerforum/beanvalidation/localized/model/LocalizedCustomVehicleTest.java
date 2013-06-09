@@ -22,29 +22,29 @@ public class LocalizedCustomVehicleTest {
     @BeforeClass
     public static void setUp() {
 
-	Locale danish = new Locale("da", "dk");
-	Locale.setDefault(danish);
-	ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-	LocalizedCustomVehicleTest.validator = factory.getValidator();
+        Locale danish = new Locale("da", "dk");
+        Locale.setDefault(danish);
+        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+        LocalizedCustomVehicleTest.validator = factory.getValidator();
     }
 
     @Test
     public void testWheels() throws Exception {
 
-	Car car = new Car();
-	car.setInsured(InsuranceType.HUS);
+        Car car = new Car();
+        car.setInsured(InsuranceType.HUS);
 
-	Wheel leftFrontWheel = new Wheel();
-	leftFrontWheel.setPosition("LEFT_FRONT");
-	leftFrontWheel.setDiameter(50);
+        Wheel leftFrontWheel = new Wheel();
+        leftFrontWheel.setPosition("LEFT_FRONT");
+        leftFrontWheel.setDiameter(50);
 
-	// vehicle.addWheel(leftFrontWheel);
+        car.addWheel(leftFrontWheel);
 
-	Set<ConstraintViolation<Car>> violations = LocalizedCustomVehicleTest.validator.validate(car);
+        Set<ConstraintViolation<Car>> violations = LocalizedCustomVehicleTest.validator.validate(car);
 
-	for (ConstraintViolation<Car> constraintViolation : violations) {
-	    System.out.println(constraintViolation.getPropertyPath() + ", " + constraintViolation.getMessage());
-	}
+        for (ConstraintViolation<Car> constraintViolation : violations) {
+            System.out.println(constraintViolation.getPropertyPath() + ", " + constraintViolation.getMessage());
+        }
 
     }
 

@@ -12,19 +12,19 @@ public class Motor {
     private int ccm;
 
     public String getFuel() {
-	return fuel;
+        return fuel;
     }
 
     public void setFuel(String fuel) {
-	this.fuel = fuel;
+        this.fuel = fuel;
     }
 
     public int getCcm() {
-	return ccm;
+        return ccm;
     }
 
     public void setCcm(int ccm) {
-	this.ccm = ccm;
+        this.ccm = ccm;
     }
 
 }
