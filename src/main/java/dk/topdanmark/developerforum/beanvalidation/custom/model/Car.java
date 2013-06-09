@@ -11,14 +11,14 @@ import java.util.Date;
 
 public class Car extends Vehicle {
 
-    @Min(value = 100)
-    @Max(value = 600)
+    @Min(value = 100, message = "{car.length.message}")
+    @Max(value = 600, message = "{car.length.message}")
     private int length;
 
     @CarInsurance
     private InsuranceType insured;
 
-    @Past
+    @Past(message="{car.registered.past}")
     private Date registered;
 
     @Valid

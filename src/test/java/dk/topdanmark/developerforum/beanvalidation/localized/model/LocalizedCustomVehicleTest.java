@@ -1,5 +1,6 @@
 package dk.topdanmark.developerforum.beanvalidation.localized.model;
 
+import java.util.Date;
 import java.util.Locale;
 import java.util.Set;
 
@@ -8,6 +9,7 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
+import org.apache.commons.lang.time.DateUtils;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -24,6 +26,7 @@ public class LocalizedCustomVehicleTest {
 
         Locale danish = new Locale("da", "dk");
         Locale.setDefault(danish);
+	//Locale.setDefault(Locale.ENGLISH);
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         LocalizedCustomVehicleTest.validator = factory.getValidator();
     }
@@ -33,10 +36,13 @@ public class LocalizedCustomVehicleTest {
 
         Car car = new Car();
         car.setInsured(InsuranceType.HUS);
+        car.setLength(50);
 
         Wheel leftFrontWheel = new Wheel();
         leftFrontWheel.setPosition("LEFT_FRONT");
         leftFrontWheel.setDiameter(50);
+        
+        car.setRegistered(DateUtils.addDays(new Date(), 10));
 
         car.addWheel(leftFrontWheel);
 
